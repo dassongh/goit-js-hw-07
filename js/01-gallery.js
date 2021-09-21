@@ -6,6 +6,23 @@ const markup = createMarkup(galleryItems);
 
 galleryRef.innerHTML = markup;
 
+galleryRef.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  if (e.target.nodeName !== 'IMG') {
+    return;
+  }
+
+  openModalPicture(e.target);
+});
+
+function openModalPicture(picture) {
+  const instance = basicLightbox.create(`
+    <img src="${picture.dataset.source}" width="800" height="600">
+  `);
+
+  instance.show();
+}
 
 function createMarkup(data) {
   return data.map(item => {
