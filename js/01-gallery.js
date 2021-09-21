@@ -42,14 +42,14 @@ function closeModalOnEsc(e) {
 }
 
 function createMarkup(data) {
-  return data.map(item => {
+  return data.map(( {preview, original, description} ) => {
     return `<div class="gallery__item">
-              <a class="gallery__link" href="${item.original}">
+              <a class="gallery__link" href="${original}">
                 <img
                   class="gallery__image"
-                  src="${item.preview}"
-                  data-source="${item.original}"
-                  alt="${item.description}"
+                  src="${preview}"
+                  data-source="${original}"
+                  alt="${description}"
                 />
               </a>
             </div>`
